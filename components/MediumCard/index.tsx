@@ -3,7 +3,7 @@ import React from 'react';
 
 const MediumCard = ({ src, title, button }: any) => {
   return (
-    <div className='relative bg-gray-100 w-full'>
+    <div className='relative w-full'>
       <div className='relative w-full h-[700px] rounded-2xl overflow-hidden'>
         <Image src={src} layout='fill' objectFit='cover' alt='image' />
       </div>
