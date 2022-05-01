@@ -11,6 +11,7 @@ const nextConfig = {
       'media.cntraveler.com',
       'www.guestready.com',
       'bringmethenews.com',
+      'static.onecms.io',
     ],
   },
 };
