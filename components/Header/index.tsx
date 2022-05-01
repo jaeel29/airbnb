@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { SearchIcon } from '@heroicons/react/outline';
+import { GlobeIcon, MenuIcon, SearchIcon } from '@heroicons/react/outline';
 
 const Header = () => {
   return (
@@ -48,8 +48,33 @@ const Header = () => {
       </div>
 
       {/* Right */}
-      <div className='flex-grow flex'>
-        <h1 className='ml-auto'>Right</h1>
+      <div className='flex-grow flex gap-3 h-full items-center justify-end'>
+        <Link href='/'>
+          <a className='hidden md:flex items-center h-11 px-4 rounded-full text-sm font-medium transition-all duration-150 ease-out hover:bg-gray-100 '>
+            Swith to hosting
+          </a>
+        </Link>
+
+        <Link href={'/'} passHref>
+          <div className='h-11 w-11 flex items-center justify-center rounded-full transition-all duration-150 ease-out cursor-pointer hover:bg-gray-100'>
+            <GlobeIcon className='w-5 h-5' />
+          </div>
+        </Link>
+
+        <div className='flex gap-2 items-center border-2 border-gray-200 rounded-full pl-2 h-11 bg-white cursor-pointer hover:shadow-md'>
+          <MenuIcon className='w-4 h-4' />
+
+          <div className='m-1'>
+            <div className='relative h-8 w-8 rounded-full overflow-hidden'>
+              <Image
+                src={'https://mir-s3-cdn-cf.behance.net/user/276/ffbf73422830485.604fd81f73416.jpg'}
+                layout='fill'
+                objectFit='contain'
+                alt='avatar'
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </header>
   );
