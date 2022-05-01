@@ -6,7 +6,7 @@ import Avatar from '../UI/Avatar';
 
 const Header = () => {
   return (
-    <header className='h-20 border-b border-gray-100 flex items-center  px-6 sticky top-0'>
+    <header className='h-20 border-b bg-white border-gray-100 flex items-center  px-6 sticky top-0 z-50'>
       {/* Logo */}
       <div className='flex-grow'>
         <Link href={'/'} passHref>
