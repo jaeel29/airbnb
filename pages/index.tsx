@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Banner from '../components/Banner';
 import Header from '../components/Header';
+import MediumCard from '../components/MediumCard';
 import SmallCard from '../components/SmallCard';
 import Cities from '../mocks/Cities.json';
 
@@ -19,13 +20,30 @@ const Home: NextPage = () => {
       <main className='max-w-[1500px] m-auto flex flex-col items-center pt-9 px-6 overflow-hidden'>
         <Banner />
 
-        <section className='w-full py-24'>
+        <section className='w-full pt-24'>
           <h2 className='text-[42px] font-semibold mb-12'>Inspiration for your next trip</h2>
 
           <div className='flex gap-5 w-full overflow-auto scrollbar-hide'>
             {Cities.map((city: any) => (
               <SmallCard key={city.location} city={city} />
             ))}
+          </div>
+        </section>
+
+        <section className='w-full pt-24'>
+          <h2 className='text-[42px] font-semibold mb-12'>Discover Airbnb Experiences</h2>
+
+          <div className='flex gap-6'>
+            <MediumCard
+              src='/Images/airbnb-image-1.png'
+              title='Things to do on your trip'
+              button='Experiences'
+            />
+            <MediumCard
+              src='https://www.guestready.com/blog/wp-content/uploads/2019/11/Airbnb-Plus-1.jpg'
+              title='Things to do from home'
+              button='Online Experiences'
+            />
           </div>
         </section>
       </main>

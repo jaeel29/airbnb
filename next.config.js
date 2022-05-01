@@ -8,6 +8,9 @@ const nextConfig = {
       'media.wired.com',
       'news.airbnb.com',
       'links.papareact.com',
+      'media.cntraveler.com',
+      'www.guestready.com',
+      'bringmethenews.com',
     ],
   },
 };
