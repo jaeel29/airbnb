@@ -1,42 +1,50 @@
 [
   {
     "img": "https://links.papareact.com/5j2",
-    "location": "London",
-    "distance": "45-minute drive"
+    "location": "Casablanca",
+    "distance": "current city",
+    "color": "#CC2D4A"
   },
   {
     "img": "https://links.papareact.com/1to",
-    "location": "Manchester",
-    "distance": "45-hour driv"
+    "location": "Marrakesh",
+    "distance": "150 kilometers away",
+    "color": "#CC2D4A"
   },
   {
     "img": "https://links.papareact.com/40m",
-    "location": "Liverpool",
-    "distance": "45-hour driv"
+    "location": "Nador",
+    "distance": "387 kilometers away",
+    "color": "#CC2D4A"
   },
   {
     "img": "https://links.papareact.com/msp",
-    "location": "York",
-    "distance": "4-hour drive"
+    "location": "Berkane",
+    "distance": "425 kilometers away",
+    "color": "#CC2D4A"
   },
   {
     "img": "https://links.papareact.com/2k3",
-    "location": "Cardiff",
-    "distance": "45-minute drive"
+    "location": "Oujda",
+    "distance": "540 kilometers away",
+    "color": "#CC2D4A"
   },
   {
     "img": "https://links.papareact.com/ynx",
-    "location": "Birkenhead",
-    "distance": "45-hour driv"
+    "location": "Essaouira",
+    "distance": "325 kilometers away",
+    "color": "#CC2D4A"
   },
   {
     "img": "https://links.papareact.com/kji",
-    "location": "Newquay",
-    "distance": "6-hour drive"
+    "location": "Tangier",
+    "distance": "320 kilometers away",
+    "color": "#CC2D4A"
   },
   {
     "img": "https://links.papareact.com/41m",
-    "location": "Hove",
-    "distance": "2-hour drive"
+    "location": "Tetouan",
+    "distance": "270 kilometers away",
+    "color": "#CC2D4A"
   }
 ]

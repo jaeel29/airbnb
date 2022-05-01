@@ -22,7 +22,7 @@ const Home: NextPage = () => {
         <section className='w-full py-24'>
           <h2 className='text-[42px] font-semibold mb-12'>Inspiration for your next trip</h2>
 
-          <div className='flex gap-5 w-full overflow-auto'>
+          <div className='flex gap-5 w-full overflow-auto scrollbar-hide'>
             {Cities.map((city: any) => (
               <SmallCard key={city.location} city={city} />
             ))}
