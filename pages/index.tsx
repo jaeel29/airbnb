@@ -1,7 +1,11 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Fragment } from 'react';
 import Banner from '../components/Banner';
 import Header from '../components/Header';
+import Cities from '../mocks/Cities.json';
 
 const Home: NextPage = () => {
   return (
@@ -12,15 +16,49 @@ const Home: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      {/* Header */}
       <Header />
 
-      {/* Banner */}
-      <Banner />
+      <main className='max-w-[1500px] m-auto flex flex-col items-center pt-9 px-6 overflow-hidden'>
+        <Banner />
 
-      {/* Cities */}
+        <section className='w-full'>
+          <h2 className='text-[42px] font-semibold mb-8'>Inspiration for your next trip</h2>
+
+          <div className='flex gap-5 w-full overflow-auto'>
+            {Cities.map((city: any) => (
+              <Fragment key={city.location}>
+                <Link href={'/'} passHref>
+                  <div className='flex flex-col rounded-2xl w-[380px] overflow-hidden flex-shrink-0 bg-gray-100'>
+                    <div className='relative w-full h-[260px]'>
+                      <Image src={city.img} layout='fill' objectFit='cover' alt={city.location} />
+                    </div>
+
+                    <div className='p-6 pb-20'>
+                      <h5 className='font-semibold text-4xl mb-3 text-gray-900'>{city.location}</h5>
+                      <p className='text-xl font-normal text-gray-600'>{city.distance}</p>
+                    </div>
+                  </div>
+                </Link>
+              </Fragment>
+            ))}
+          </div>
+        </section>
+      </main>
     </div>
   );
 };
 
 export default Home;
+
+//^ Pull Cities from a server - API endpoints
+// export const getServerSideProps = async () => {
+//   const cities = await fetch('https://links.papareact.com/pyp').then((response) => response.json());
+
+//   console.log(cities);
+
+//   return {
+//     props: {
+//       cities,
+//     },
+//   };
+// };

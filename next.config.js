@@ -7,6 +7,7 @@ const nextConfig = {
       'mir-s3-cdn-cf.behance.net',
       'media.wired.com',
       'news.airbnb.com',
+      'links.papareact.com',
     ],
   },
 };
