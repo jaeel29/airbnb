@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { GlobeIcon, MenuIcon, SearchIcon } from '@heroicons/react/outline';
+import Avatar from '../UI/Avatar';
 
 const Header = () => {
   return (
@@ -64,16 +65,9 @@ const Header = () => {
         <div className='flex gap-2 items-center border-2 border-gray-200 rounded-full pl-2 h-11 bg-white cursor-pointer hover:shadow-md'>
           <MenuIcon className='w-4 h-4' />
 
-          <div className='m-1'>
-            <div className='relative h-8 w-8 rounded-full overflow-hidden'>
-              <Image
-                src={'https://mir-s3-cdn-cf.behance.net/user/276/ffbf73422830485.604fd81f73416.jpg'}
-                layout='fill'
-                objectFit='contain'
-                alt='avatar'
-              />
-            </div>
-          </div>
+          <Avatar
+            url={'https://mir-s3-cdn-cf.behance.net/user/276/ffbf73422830485.604fd81f73416.jpg'}
+          />
         </div>
       </div>
     </header>
