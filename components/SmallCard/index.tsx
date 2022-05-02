@@ -10,8 +10,6 @@ interface ColorProps {
 }
 
 const SmallCard: FC<{ city: ColorProps }> = ({ city }) => {
-  console.log(city);
-
   return (
     <div
       className={`flex flex-col rounded-2xl w-[380px] overflow-hidden flex-shrink-0 cursor-pointer transition-all duration-150 ease-out active:scale-95`}

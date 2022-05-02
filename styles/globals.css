@@ -2,8 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @layer components {
-  .container {
-    @apply px-6;
+@layer base {
+  .react-datepicker-wrapper {
+    display: inline-block;
+    padding: 0;
+    border: 0;
+    width: 100%;
+    border: 2px solid red;
   }
-} */
+
+  .react-datepicker {
+    border: 2px solid red;
+  }
+
+  .react-datepicker__input-time-container {
+    border: 2px solid red;
+  }
+}

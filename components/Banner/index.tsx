@@ -11,6 +11,7 @@ const Banner = () => {
           objectFit='cover'
           objectPosition={'center'}
           alt='banner photo'
+          priority
         />
       </div>
 
