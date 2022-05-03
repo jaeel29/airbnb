@@ -1,12 +1,14 @@
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CalendarIcon, GlobeIcon, MenuIcon, SearchIcon, XIcon } from '@heroicons/react/outline';
 import Avatar from '../UI/Avatar';
 import OutsideClickHandler from 'react-outside-click-handler';
-import DatePicker from 'react-datepicker';
+
 import 'react-datepicker/dist/react-datepicker.css';
 import './Header.module.css';
+import { json } from 'stream/consumers';
+import FormHeader from './FormHeader';
 
 const Header = () => {
   const [searchIsOpen, setSearchIsOpen] = useState(false);
@@ -20,20 +22,24 @@ const Header = () => {
   const [checkOut, setCheckOut] = useState(false);
   const toggleCheckOut = () => setCheckOut((prev) => !prev);
 
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const [startDate, setStartDate] = useState<any>(new Date());
+  const handleChangeStart = (date: any) => {
+    setStartDate(date);
+    toggleCheckIn();
+  };
 
-  const selectRange = {
-    startDate,
-    endDate,
-    key: 'Selection',
+  const [endDate, setEndDate] = useState<any>(new Date());
+  const handleChangeEnd = (date: any) => {
+    setEndDate(date);
+    toggleCheckOut();
   };
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
 
     console.log(location);
-    console.log(selectRange);
+    console.log(startDate);
+    console.log(endDate);
   };
 
   return (
@@ -96,86 +102,20 @@ const Header = () => {
       </div>
 
       {searchIsOpen && (
-        <OutsideClickHandler onOutsideClick={() => setSearchIsOpen(false)}>
-          <div className='absolute left-0 top-[80px] w-full py-8 shadow-lg bg-white'>
-            <form onSubmit={submitHandler} className='flex items-center justify-center gap-7'>
-              <input
-                className='outline-none w-[300px] py-3 rounded-full shadow-lg flex flex-col justify-center px-4 pl-6 cursor-pointer'
-                type='text'
-                placeholder='Where are you going?'
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-              />
-
-              <div className='relative'>
-                <div
-                  className='w-[300px] py-3 rounded-full shadow-lg flex gap-4 px-4 pl-6 cursor-pointer border border-gray-100'
-                  onClick={toggleCheckIn}
-                >
-                  <div className='pt-1'>
-                    <CalendarIcon className='w-5 h-5 text-gray-400' />
-                  </div>
-
-                  <div>
-                    <p className='text-xl font-semibold'>Check in</p>
-                    <p className='text-base text-gray-400'>Add date</p>
-                  </div>
-                </div>
-
-                {checkIn && (
-                  <div className='absolute top-[calc(100% + 10px)] left-0'>
-                    <OutsideClickHandler onOutsideClick={toggleCheckIn}>
-                      <DatePicker
-                        selected={startDate}
-                        onChange={(date: any) => setStartDate(date)}
-                        selectsStart
-                        startDate={startDate}
-                        endDate={endDate}
-                        inline
-                      />
-                    </OutsideClickHandler>
-                  </div>
-                )}
-              </div>
-
-              <div className='relative'>
-                <div
-                  className='w-[300px] py-3 rounded-full shadow-lg flex gap-4 px-4 pl-6 cursor-pointer border border-gray-100'
-                  onClick={toggleCheckOut}
-                >
-                  <div className='pt-1'>
-                    <CalendarIcon className='w-5 h-5 text-gray-400' />
-                  </div>
-
-                  <div>
-                    <p className='text-xl font-semibold'>Check out</p>
-                    <p className='text-base text-gray-400'>Add date</p>
-                  </div>
-                </div>
-
-                {checkOut && (
-                  <div className='absolute top-[calc(100% + 10px)] left-0'>
-                    <OutsideClickHandler onOutsideClick={toggleCheckOut}>
-                      <DatePicker
-                        selected={endDate}
-                        onChange={(date: any) => setEndDate(date)}
-                        selectsEnd
-                        startDate={startDate}
-                        endDate={endDate}
-                        minDate={startDate}
-                        inline
-                      />
-                    </OutsideClickHandler>
-                  </div>
-                )}
-              </div>
-
-              <button type='submit' hidden>
-                Submit
-              </button>
-            </form>
-          </div>
-        </OutsideClickHandler>
+        <FormHeader
+          toggleSearchIsOpen={toggleSearchIsOpen}
+          location={location}
+          setLocation={setLocation}
+          startDate={startDate}
+          handleChangeStart={handleChangeStart}
+          endDate={endDate}
+          handleChangeEnd={handleChangeEnd}
+          checkIn={checkIn}
+          toggleCheckIn={toggleCheckIn}
+          checkOut={checkOut}
+          toggleCheckOut={toggleCheckOut}
+          submitHandler={submitHandler}
+        />
       )}
     </header>
   );
