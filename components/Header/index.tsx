@@ -1,17 +1,15 @@
 import React, { FormEvent, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CalendarIcon, GlobeIcon, MenuIcon, SearchIcon, XIcon } from '@heroicons/react/outline';
+import { GlobeIcon, MenuIcon, SearchIcon, XIcon } from '@heroicons/react/outline';
 import Avatar from '../UI/Avatar';
-import OutsideClickHandler from 'react-outside-click-handler';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './Header.module.css';
-import { json } from 'stream/consumers';
 import FormHeader from './FormHeader';
 
 const Header = () => {
-  const [searchIsOpen, setSearchIsOpen] = useState(false);
+  const [searchIsOpen, setSearchIsOpen] = useState(true);
   const toggleSearchIsOpen = () => setSearchIsOpen((prev) => !prev);
 
   const [location, setLocation] = useState('');
