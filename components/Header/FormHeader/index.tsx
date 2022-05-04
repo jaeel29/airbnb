@@ -20,12 +20,12 @@ const FormHeader = ({
   toggleCheckIn,
   checkOut,
   toggleCheckOut,
-  submitHandler,
+  submiSearchtHandler,
 }: any) => {
   return (
     <OutsideClickHandler onOutsideClick={toggleSearchIsOpen}>
       <div className='absolute left-0 top-[80px] w-full py-8 pb-9 shadow-lg bg-white'>
-        <form onSubmit={submitHandler}>
+        <form onSubmit={submiSearchtHandler}>
           <div className='w-[1200px] h-20 mx-auto flex bg-white rounded-full ring-1 ring-gray-100'>
             <div className='flex-1 cursor-pointer'>
               <div className='px-5 h-full rounded-full flex items-center gap-4 transition-all duration-300 ease-out hover:bg-gray-100 focus-within:shadow-lg'>

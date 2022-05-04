@@ -7,6 +7,8 @@ import Avatar from '../UI/Avatar';
 import 'react-datepicker/dist/react-datepicker.css';
 import './Header.module.css';
 import FormHeader from './FormHeader';
+import { useRouter } from 'next/router';
+import format from 'date-fns/format';
 
 const tagsList = [
   { title: 'Price', menu: ['item 1', 'item 2'] },
@@ -23,6 +25,8 @@ const tagsList = [
 ];
 
 const Header = ({ tags }: { tags?: boolean }) => {
+  const router = useRouter();
+
   const [searchIsOpen, setSearchIsOpen] = useState(false);
   const toggleSearchIsOpen = () => setSearchIsOpen((prev) => !prev);
 
@@ -46,12 +50,15 @@ const Header = ({ tags }: { tags?: boolean }) => {
     toggleCheckOut();
   };
 
-  const submitHandler = (e: FormEvent) => {
+  const submiSearchtHandler = (e: FormEvent) => {
     e.preventDefault();
 
-    console.log(location);
-    console.log(startDate);
-    console.log(endDate);
+    const formatedStartDate = format(startDate, 'dd MMMM yy');
+    const formatedEndDate = format(endDate, 'dd MMMM yy');
+
+    router.push(
+      `/search?location=${location}&startDate=${formatedStartDate}&endDate=${formatedEndDate}&numberOfGuests=1`
+    );
   };
 
   return (
@@ -130,7 +137,7 @@ const Header = ({ tags }: { tags?: boolean }) => {
             toggleCheckIn={toggleCheckIn}
             checkOut={checkOut}
             toggleCheckOut={toggleCheckOut}
-            submitHandler={submitHandler}
+            submiSearchtHandler={submiSearchtHandler}
           />
         )}
       </header>
@@ -138,9 +145,9 @@ const Header = ({ tags }: { tags?: boolean }) => {
       {tags && (
         <div className='w-full bg-white flex items-center px-6 h-20 border-b border-gray-100 sticky top-[80px]'>
           {tagsList.map((tag) => (
-            <>
+            <div key={tag.title}>
               {tag.menu ? (
-                <div key={Math.random()} className=''>
+                <div key={tag.title}>
                   <div className='inline-block whitespace-nowrap pr-2 py-1 w-full'>
                     <button className='relative px-4 py-2 rounded-full cursor-pointer text-center border border-[##dddddd] outline-none bg-white transition-all duration-150 ease-out active:border-gray-900 active:scale-95'>
                       <span className='inline-block mr-2 text-sm font-normal text-gray-800 leading-4'>
@@ -153,7 +160,7 @@ const Header = ({ tags }: { tags?: boolean }) => {
                   </div>
                 </div>
               ) : (
-                <div key={Math.random()} className=''>
+                <div>
                   <div className='inline-block whitespace-nowrap pr-2 py-1 w-full'>
                     {/* after:content-[""] after:absolute after:left-0 after:top-0 after:border-2 after:border-red-500 after:w-full after:h-full after:rounded-full */}
                     <button className='relative px-4 py-2 rounded-full cursor-pointer text-center border border-[##dddddd] outline-none bg-white transition-all duration-150 ease-out active:border-gray-900 active:scale-95'>
@@ -164,7 +171,7 @@ const Header = ({ tags }: { tags?: boolean }) => {
                   </div>
                 </div>
               )}
-            </>
+            </div>
           ))}
         </div>
       )}
