@@ -3,9 +3,11 @@ import { StarIcon } from '@heroicons/react/solid';
 import Image from 'next/image';
 import React from 'react';
 import { SearchResults } from '../../types';
+import { priceTransfom } from '../../utils/price';
 
 const InfoCard = ({ item }: { item: SearchResults }) => {
-  const [price, mode] = item.price.split(' / ');
+  // const [price, mode] = item.price.split(' / ');
+  const [price, mode] = priceTransfom(item.price);
 
   return (
     <div className='cursor-pointer'>

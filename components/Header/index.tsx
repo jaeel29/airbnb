@@ -48,9 +48,9 @@ const Header: FC<{ tags?: any; query?: any }> = ({ tags, query: any }) => {
   };
 
   return (
-    <>
-      <header
-        className={`h-20 bg-white flex items-center  px-6 sticky top-0 z-50 ${
+    <header>
+      <div
+        className={`h-20 bg-white flex items-center px-6 sticky top-0 z-50 ${
           !tags && 'border-b border-gray-100'
         }`}
       >
@@ -129,10 +129,10 @@ const Header: FC<{ tags?: any; query?: any }> = ({ tags, query: any }) => {
             submiSearchtHandler={submiSearchtHandler}
           />
         )}
-      </header>
+      </div>
 
       {tags && (
-        <div className='w-full bg-white flex items-center px-6 h-20 border-b border-gray-200 absolute top-[80px] z-10'>
+        <div className='w-full bg-white flex items-center px-6 h-20 border-b border-gray-200 sticky top-[80px] z-10'>
           {tags.map((tag: any) => (
             <div key={tag.title}>
               {tag.menu ? (
@@ -164,7 +164,7 @@ const Header: FC<{ tags?: any; query?: any }> = ({ tags, query: any }) => {
           ))}
         </div>
       )}
-    </>
+    </header>
   );
 };
 

@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import InfoCard from '../components/InfoCard';
+import MapComponent from '../components/MapComponent';
 import PageLayout from '../components/PageLayout';
 import TagsList from '../mocks/TagsList.json';
 import { QueryProps, SearchResults } from '../types';
@@ -59,10 +60,8 @@ const Search = ({ searchResults }: { searchResults: SearchResults[] }) => {
             </div>
           </div>
 
-          <div className='bg-green-200 flex-1'>
-            <div className='flex items-center justify-center h-full'>
-              <h1>Map Here</h1>
-            </div>
+          <div className='flex-1 overflow-hidden'>
+            <MapComponent searchResults={searchResults} />
           </div>
         </main>
       </PageLayout>
