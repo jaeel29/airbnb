@@ -1,4 +1,4 @@
-import Map, { Marker, Popup } from 'react-map-gl';
+import Map, { Marker } from 'react-map-gl';
 import getCenter from 'geolib/es/getCenter';
 import { SearchResults, SelectedLocationType } from '../../types';
 import { priceTransfom } from '../../utils/price';
@@ -39,7 +39,11 @@ const MapComponent = ({ searchResults }: { searchResults: SearchResults[] }) => 
 
           return (
             <div key={result.lat}>
-              <Marker longitude={result.long} latitude={result.lat}>
+              <Marker
+                longitude={result.long}
+                latitude={result.lat}
+                style={{ display: 'inline-flex' }}
+              >
                 <button
                   onClick={() => setSelected(result)}
                   className={`bg-white rounded-full shadow-md cursor-pointer border border-gray-200 inline-flex items-center justify-center py-1 px-3 transition-all duration-150 ease-out active:bg-black active:border-gray-400 hover:scale-110 ${
