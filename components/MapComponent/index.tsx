@@ -8,12 +8,19 @@ import ThinCard from '../ThinCard';
 const MapComponent = ({ searchResults }: { searchResults: SearchResults[] }) => {
   const [selected, setSelected] = useState<SelectedLocationType>();
 
+  let long, lat;
   const coordinates = searchResults.map((result) => ({
     longitude: result.long,
     latitude: result.lat,
   }));
 
   const center = getCenter(coordinates);
+  if (center) {
+    long = center.longitude;
+    lat = center.latitude;
+  }
+
+  console.log(long, lat);
 
   return (
     <>
@@ -22,8 +29,8 @@ const MapComponent = ({ searchResults }: { searchResults: SearchResults[] }) => 
         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_KEY}
         style={{ width: '100%', height: '100%' }}
         initialViewState={{
-          longitude: center.longitude,
-          latitude: center.latitude,
+          longitude: long,
+          latitude: lat,
           zoom: 11,
         }}
       >
