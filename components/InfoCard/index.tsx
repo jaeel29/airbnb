@@ -37,7 +37,7 @@ const InfoCard = ({ item }: { item: SearchResults }) => {
           <div className='flex'>
             <div className='flex items-center gap-1 self-start flex-1'>
               <span>
-                <StarIcon className='w-[14px] h-[14px] text-red-500' />
+                <StarIcon className='w-5 h-5 text-red-500' />
               </span>
               <span className='text-sm'>{item.star}</span>
               <span className='text-sm text-gray-400'>(59 reviews)</span>

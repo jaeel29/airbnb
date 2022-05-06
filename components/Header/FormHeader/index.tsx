@@ -9,7 +9,6 @@ import DatePicker from 'react-datepicker';
 import OutsideClickHandler from 'react-outside-click-handler';
 
 const FormHeader = ({
-  toggleSearchIsOpen,
   location,
   setLocation,
   startDate,

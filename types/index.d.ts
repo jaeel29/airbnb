@@ -13,3 +13,5 @@ export interface SearchResults {
   long: number;
   lat: number;
 }
+
+export type SelectedLocationType = SearchResults | '';
