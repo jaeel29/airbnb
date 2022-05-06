@@ -1,4 +1,5 @@
-import { HeartIcon, StarIcon } from '@heroicons/react/solid';
+import { HeartIcon } from '@heroicons/react/outline';
+import { StarIcon } from '@heroicons/react/solid';
 import Image from 'next/image';
 import React from 'react';
 import { SearchResults } from '../../types';
