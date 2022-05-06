@@ -132,7 +132,7 @@ const Header: FC<{ tags?: any; query?: any }> = ({ tags, query: any }) => {
       </header>
 
       {tags && (
-        <div className='w-full bg-white flex items-center px-6 h-20 border-b border-gray-200 sticky top-[80px] z-50'>
+        <div className='w-full bg-white flex items-center px-6 h-20 border-b border-gray-200 absolute top-[80px] z-10'>
           {tags.map((tag: any) => (
             <div key={tag.title}>
               {tag.menu ? (
