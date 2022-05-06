@@ -36,12 +36,12 @@ const MapComponent = ({ searchResults }: { searchResults: SearchResults[] }) => 
                 <button
                   onClick={() => setSelected(result)}
                   className={`bg-white rounded-full shadow-md cursor-pointer border border-gray-200 inline-flex items-center justify-center py-1 px-3 transition-all duration-150 ease-out active:bg-black active:border-gray-400 hover:scale-110 ${
-                    selected?.title === result.title && 'bg-black border-gray-400'
+                    selected && selected?.title === result.title && 'bg-black border-gray-400'
                   }`}
                 >
                   <span
                     className={`text-center text-base font-semibold text-black active:text-white ${
-                      selected?.title === result.title && 'text-gray-50'
+                      selected && selected?.title === result.title && 'text-gray-50'
                     }`}
                   >
                     {price}
