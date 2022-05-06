@@ -39,7 +39,7 @@ const Search = ({ searchResults }: { searchResults: SearchResults[] }) => {
                 300+ stays {range} in {location}
               </h1>
 
-              <div className='flex items-center gap-3 mb-6'>
+              <div className='flex items-center gap-2 mb-6'>
                 <span>
                   <ShieldCheckIcon className='w-6 h-6 text-red-500' />
                 </span>
