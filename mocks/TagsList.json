@@ -1,0 +1,13 @@
+[
+  { "title": "Price", "menu": ["item 1", "item 2"] },
+  { "title": "Type of place", "menu": ["item 1", "item 2"] },
+  { "title": "Pool" },
+  { "title": "Wifi" },
+  { "title": "Air conditioning" },
+  { "title": "Kitchen" },
+  { "title": "Breakfast" },
+  { "title": "Washer" },
+  { "title": "Free parking" },
+  { "title": "Dedicated workspace" },
+  { "title": "Dryer" }
+]

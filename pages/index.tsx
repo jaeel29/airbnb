@@ -6,11 +6,7 @@ import Banner2 from '../components/Banner2';
 import Cards from '../components/Cards';
 import Cities from '../components/Cities';
 import Discover from '../components/Discover';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
-import MediumCard from '../components/MediumCard';
 import PageLayout from '../components/PageLayout';
-import SmallCard from '../components/SmallCard';
 import CitiesData from '../mocks/Cities.json';
 
 const Home: NextPage = () => {

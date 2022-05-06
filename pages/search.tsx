@@ -1,19 +1,27 @@
+import { ShieldCheckIcon } from '@heroicons/react/outline';
+import { GetServerSideProps } from 'next';
 import Head from 'next/head';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
-import React, { useEffect } from 'react';
+import InfoCard from '../components/InfoCard';
 import PageLayout from '../components/PageLayout';
-import format from 'date-fns/format';
+import TagsList from '../mocks/TagsList.json';
+import { QueryProps, SearchResults } from '../types';
 
-interface QueryProps {
-  [key: string]: any;
-}
-
-const Search = () => {
+const Search = ({ searchResults }: { searchResults: SearchResults[] }) => {
   const router = useRouter();
-  const { location, startDate, endDate, numberOfGuests } = router.query;
+
+  console.log(searchResults[0]);
+
+  let { location, startDate, endDate, numberOfGuests }: QueryProps<string> = router.query;
+
+  if (typeof startDate === 'string') {
+    const [day, month, year] = (startDate as string).split('-');
+  } else {
+    return;
+  }
 
   const range = `${startDate} — ${endDate}`;
-  console.log(range);
 
   return (
     <div>
@@ -23,18 +31,31 @@ const Search = () => {
         <link rel='icon' href='/airbnb_logo.png' />
       </Head>
 
-      <PageLayout tags>
-        <main className='h-screen flex'>
-          <div className='bg-white flex-1'>
-            <div className='my-6 mx-6 border-b border-gray-200'>
+      <PageLayout tags={TagsList} query={{ location, startDate, endDate, numberOfGuests }}>
+        <main className='flex h-[calc(100vh-160px)]'>
+          <div className='bg-white flex-1 overflow-y-scroll scrollbar-hide'>
+            <div className='px-6 pt-6'>
               <h1 className='text-sm text-gray-700 mb-6'>
                 300+ stays {range} in {location}
               </h1>
 
-              <p className='text-sm text-gray-700 pb-6'>
-                Review COVID-19 travel restrictions before you book.{' '}
-                <a className='underline cursor-pointer'>Learn more</a>
-              </p>
+              <div className='flex items-center gap-3 mb-6'>
+                <span>
+                  <ShieldCheckIcon className='w-6 h-6 text-red-500' />
+                </span>
+                <span className='text-sm text-gray-700'>
+                  More than 1,000,000 guests have stayed in London. On average they rated their
+                  stays 4.7 out of 5 stars.
+                </span>
+              </div>
+
+              <div className='h-[1px] bg-gray-200 w-full mt-3 mb-6' />
+            </div>
+
+            <div className='px-6 flex flex-col'>
+              {searchResults.map((item) => (
+                <InfoCard item={item} key={Math.random()} />
+              ))}
             </div>
           </div>
 
@@ -50,3 +71,15 @@ const Search = () => {
 };
 
 export default Search;
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const results = await fetch('https://links.papareact.com/isz').then((res) => res.json());
+
+  console.log(results);
+
+  return {
+    props: {
+      searchResults: results,
+    },
+  };
+};

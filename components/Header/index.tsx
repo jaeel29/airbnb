@@ -1,4 +1,4 @@
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, { FC, FormEvent, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ChevronDownIcon, GlobeIcon, MenuIcon, SearchIcon, XIcon } from '@heroicons/react/outline';
@@ -10,21 +10,7 @@ import FormHeader from './FormHeader';
 import { useRouter } from 'next/router';
 import format from 'date-fns/format';
 
-const tagsList = [
-  { title: 'Price', menu: ['item 1', 'item 2'] },
-  { title: 'Type of place', menu: ['item 1', 'item 2'] },
-  { title: 'Pool' },
-  { title: 'Wifi' },
-  { title: 'Air conditioning' },
-  { title: 'Kitchen' },
-  { title: 'Breakfast' },
-  { title: 'Washer' },
-  { title: 'Free parking' },
-  { title: 'Dedicated workspace' },
-  { title: 'Dryer' },
-];
-
-const Header = ({ tags }: { tags?: boolean }) => {
+const Header: FC<{ tags?: any; query?: any }> = ({ tags, query: any }) => {
   const router = useRouter();
 
   const [searchIsOpen, setSearchIsOpen] = useState(false);
@@ -53,8 +39,8 @@ const Header = ({ tags }: { tags?: boolean }) => {
   const submiSearchtHandler = (e: FormEvent) => {
     e.preventDefault();
 
-    const formatedStartDate = format(startDate, 'dd MMMM yy');
-    const formatedEndDate = format(endDate, 'dd MMMM yy');
+    const formatedStartDate = format(startDate, 'dd-MMMM-yy');
+    const formatedEndDate = format(endDate, 'dd-MMMM-yy');
 
     router.push(
       `/search?location=${location}&startDate=${formatedStartDate}&endDate=${formatedEndDate}&numberOfGuests=1`
@@ -96,7 +82,10 @@ const Header = ({ tags }: { tags?: boolean }) => {
             </button>
           </div>
         ) : (
-          <div className='hidden sm:inline-flex h-8 w-8 m-2 items-center justify-center bg-red-400 rounded-full cursor-pointer'>
+          <div
+            className='hidden sm:inline-flex h-8 w-8 m-2 items-center justify-center bg-red-400 rounded-full cursor-pointer'
+            onClick={toggleSearchIsOpen}
+          >
             <XIcon className='w-4 h-4 text-white' />
           </div>
         )}
@@ -143,8 +132,8 @@ const Header = ({ tags }: { tags?: boolean }) => {
       </header>
 
       {tags && (
-        <div className='w-full bg-white flex items-center px-6 h-20 border-b border-gray-100 sticky top-[80px]'>
-          {tagsList.map((tag) => (
+        <div className='w-full bg-white flex items-center px-6 h-20 border-b border-gray-200 sticky top-[80px] z-50'>
+          {tags.map((tag: any) => (
             <div key={tag.title}>
               {tag.menu ? (
                 <div key={tag.title}>
